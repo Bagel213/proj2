@@ -37,6 +37,7 @@
  */
 
 #include <spinlock.h>
+#include <filetable.h>
 
 struct addrspace;
 struct thread;
@@ -72,6 +73,7 @@ struct proc {
 	struct filetable *p_filetable;  /* table of open files */
 
 	/* add more material here as needed */
+
 };
 
 /* This is the process structure for the kernel and for kernel-only threads. */

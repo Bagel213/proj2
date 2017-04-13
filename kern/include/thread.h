@@ -40,6 +40,7 @@
 #include <spinlock.h>
 #include <threadlist.h>
 
+
 struct cpu;
 
 /* get machine-dependent defs */
@@ -84,7 +85,8 @@ struct thread {
 	struct cpu *t_cpu;		/* CPU thread runs on */
 	struct proc *t_proc;		/* Process thread belongs to */
 	HANGMAN_ACTOR(t_hangman);	/* Deadlock detector hook */
-
+	
+	
 	/*
 	 * Interrupt state fields.
 	 *

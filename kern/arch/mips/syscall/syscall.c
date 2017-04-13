@@ -132,6 +132,19 @@ syscall(struct trapframe *tf)
                         tf->tf_a2,
                         &retval);
                 break;
+				
+			case SYS_write:
+				err = sys_write(
+                        tf->tf_a0,
+                        (userptr_t)tf->tf_a1,
+                        tf->tf_a2,
+                        &retval);
+				break;
+				
+			case SYS_close:
+				err = sys_close(
+					tf->tf_a0);
+				break;
 
             /* Project 2:
              * Add more for encrypt, close, and write . */
