@@ -62,7 +62,7 @@ sys_open(const_userptr_t upath, int flags, mode_t mode, int *retval)
 	// (void) allflags; // suppress compilation warning until code gets written
 	// (void) kpath; // suppress compilation warning until code gets written
 	// (void) file; // suppress compilation warning until code gets written
-	
+	kprintf("open\n");
 	kfree(kpath);
 	return result;
 }
@@ -113,9 +113,9 @@ sys_read(int fd, userptr_t buf, size_t size, int *retval)
       // (void) fd; // suppress compilation warning until code gets written
        // (void) buf; // suppress compilation warning until code gets written
        // // (void) size; // suppress compilation warning until code gets written
-       (void) retval; // suppress compilation warning until code gets written
+      // (void) retval; // suppress compilation warning until code gets written
 		*retval=size - uioUser.uio_resid;
-		//kprintf("Read\n");
+		kprintf("Read\n");
        return result;
 }
 
@@ -150,7 +150,7 @@ sys_write(int fd, userptr_t buf, size_t size, int *retval){
 	   uio_kinit(&iov, &uioUser, buffer, size, file->of_offset, UIO_WRITE);
 		result = VOP_WRITE(file->of_vnode, &uioUser);
 			if (result){
-				kprintf ("vop\n");
+				//kprintf ("vop\n");
 			return result;}
 			
 		// result = copyinstr((const void *)buffer, (userptr_t)buf, size);
@@ -161,7 +161,7 @@ sys_write(int fd, userptr_t buf, size_t size, int *retval){
 		file->of_offset = uioUser.uio_offset;	
 		filetable_put(curproc->p_filetable, fd, file);
 		*retval=size - uioUser.uio_resid; 
-		//kprintf ("write\n");
+		kprintf ("write\n");
 		kfree(buffer);
 		return result;
 }
@@ -183,7 +183,7 @@ int sys_close(int fd){
 		openfile_decref(oldfile);
 	}
 	
-	//kprintf ("close\n");
+	kprintf ("close\n");
 	return 0;
 }
 /* 

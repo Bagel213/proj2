@@ -74,32 +74,32 @@ main(int argc, char *argv[])
 		 err(1, "%s: write", file);
 	}
 
-	// rv = close(fd);
-	// if (rv<0) {
-		// err(1, "%s: close (1st time)", file);
-	// }
+	rv = close(fd);
+	if (rv<0) {
+		err(1, "%s: close (1st time)", file);
+	}
 
-	// fd = open(file, O_RDONLY);
-	// if (fd<0) {
-		// err(1, "%s: open for read", file);
-	// }
+	fd = open(file, O_RDONLY);
+	if (fd<0) {
+		err(1, "%s: open for read", file);
+	}
 
-	// rv = read(fd, readbuf, 40);
-	// if (rv<0) {
-		// err(1, "%s: read", file);
-	// }
+	rv = read(fd, readbuf, 40);
+	if (rv<0) {
+		err(1, "%s: read", file);
+	}
 
-	// rv = close(fd);
-	// printf("Closing fd=%d retval=%d.\n", fd, rv);
-	// if (rv<0) {
-		// err(1, "%s: close (2nd time)", file);
-	// }
-	// /* ensure null termination */
-	// readbuf[40] = 0;
+	rv = close(fd);
+	printf("Closing fd=%d retval=%d.\n", fd, rv);
+	if (rv<0) {
+		err(1, "%s: close (2nd time)", file);
+	}
+	/* ensure null termination */
+	readbuf[40] = 0;
 
-	// if (strcmp(readbuf, writebuf)) {
-		// errx(1, "Buffer data mismatch!");
-	// }
+	if (strcmp(readbuf, writebuf)) {
+		errx(1, "Buffer data mismatch!");
+	}
 
 /*	rv = remove(file);
 	if (rv<0) {
