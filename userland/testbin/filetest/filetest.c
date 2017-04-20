@@ -47,8 +47,7 @@ int
 main(int argc, char *argv[])
 {
 	static char writebuf[40] = "Twiddle dee dee, Twiddle dum dum.......\n";
-	//static char readbuf[41];
-
+	static char readbuf[41];
 	const char *file;
 	int fd, rv;
 
@@ -78,7 +77,7 @@ main(int argc, char *argv[])
 	if (rv<0) {
 		err(1, "%s: close (1st time)", file);
 	}
-
+    
 	fd = open(file, O_RDONLY);
 	if (fd<0) {
 		err(1, "%s: open for read", file);

@@ -109,7 +109,7 @@
 #define SYS_close        49
 #define SYS_read         50
 #define SYS_pread        51
-//#define SYS_readv      52
+#define SYS_encrypt      52
 //#define SYS_preadv     53
 #define SYS_getdirentry  54
 #define SYS_write        55
@@ -196,7 +196,6 @@
 #define SYS_sync         118
 #define SYS_reboot       119
 //#define SYS___sysctl   120
-
 /*CALLEND*/
 
 
