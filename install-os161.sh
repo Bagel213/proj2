@@ -11,8 +11,8 @@ mkdir -p $HOME/os161/root
 ./configure --ostree=$HOME/os161/root
 
 # uncomment the following if you need to update the includes and dependencies
-#bmake includes
-#bmake depend
+bmake includes
+bmake depend
 bmake
 bmake install
 
